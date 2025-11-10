@@ -1,0 +1,28 @@
+.rightSide{
+    display: flex;
+    border: solid #303138;
+    width: 20vw;
+    height: 100vh;
+    justify-content: center;
+    
+}
+
+.search{
+    width: 17vw;
+    height: 3vh;
+    justify-content: center;
+    background-color: rgb(58, 58, 71);
+    border-radius: 10px;
+    justify-content: center;
+    position: absolute;
+    top: 20px;
+}
+
+.trends{
+    border: solid none;
+    width: 17vw;
+    height: 70vh;
+    position: absolute;
+    top: 70px;
+    text-align: center;
+}

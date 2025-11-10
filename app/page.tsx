@@ -1,6 +1,7 @@
 import Image from "next/image";
 import './page.css'
 import Navbar from './components/navbar/page'
+import Trends from './components/trends/page'
 
 export default function Home() {
   return (
@@ -9,9 +10,10 @@ export default function Home() {
     
      <Navbar />
 
-    <section className="rightSide">
-    <input className="search" type="search" />
-    </section>
+
+     <Trends />
+
+    
 
     </section>
   );

@@ -9,16 +9,3 @@ body{
     gap: 765px;
 }
 
-.rightSide{
-    display: flex;
-    border: solid;
-    width: 20vw;
-    height: 100vh;
-    
-}
-
-.search{
-    width: 17vw;
-    height: 3vh;
-    justify-content: center;
-}
