@@ -39,7 +39,7 @@ på utvikling så viser jeg måten frontend og backend kommuniserer. vise forskj
 på drift så komme rjeg till å hoste den i 
 
 
-root/
+social_media/
 │
 ├── app/                         
 │   ├── layout.tsx                
