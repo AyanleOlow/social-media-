@@ -32,4 +32,8 @@ det er samme som twitter der man kna se hva som er populær , søke andre sine n
 - supabase auth
 - supabase storage
 - TypeScript
-  
+
+## måten jeg viser kompetanse
+
+på utvikling så viser jeg måten frontend og backend kommuniserer. vise forskjellige auth som google og kansje github
+på drift så komme rjeg till å hoste den i 
