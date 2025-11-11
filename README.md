@@ -37,3 +37,25 @@ det er samme som twitter der man kna se hva som er populær , søke andre sine n
 
 på utvikling så viser jeg måten frontend og backend kommuniserer. vise forskjellige auth som google og kansje github
 på drift så komme rjeg till å hoste den i 
+
+
+root/
+│
+├── app/                         
+│   ├── layout.tsx                
+│   ├── page.tsx                   
+│   │
+│   └── components/                
+│       ├── Navbar
+
+│       ├── trend
+│        
+│
+├── public/                      
+│
+├── .env.local                
+│
+├── package.json                
+├── next.config.js               
+├── tsconfig.json               
+└── README.md                     
