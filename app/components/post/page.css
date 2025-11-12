@@ -1,0 +1,73 @@
+.screen{
+    display: flex;
+}
+
+.post{
+    display: flex;
+    border: solid #303138;
+    width: 60vw;
+    height: 20vh;
+    flex-direction: column;
+    
+}
+
+.postText{
+    display: flex;
+    border: solid #303138;
+    width: 60vw;
+    height: 13vh;
+    text-align: center;
+}
+
+.postBox{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+    left: 10px;
+}
+
+.gif:hover{
+    color: cyan;
+}
+
+.poll:hover{
+    color: cyan;
+}
+
+.img:hover{
+    color: cyan;
+}
+
+.emoji:hover{
+    color: cyan;
+}
+
+.box{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 10px;
+}
+
+button{
+    display: flex;
+    background-color: cyan;
+    justify-content: center;
+    border-radius: 20px;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 5vw;
+    position: relative;
+    right: 10px;
+}
+button:hover{
+    display: flex;
+    background-color: rgb(25, 192, 192);
+}
+button:active{
+    display: flex;
+    background-color: rgb(6, 56, 56);
+    color: white;
+}
+

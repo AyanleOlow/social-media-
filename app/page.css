@@ -6,6 +6,10 @@ body{
 
 .screen{
     display: flex;
-    gap: 765px;
+   justify-content: center;
 }
 
+.post_feed{
+    display: flex;
+    flex-direction: column;
+}

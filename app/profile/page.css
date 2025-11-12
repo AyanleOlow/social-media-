@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+    background-image: url(../../public/wallpapers.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    justify-content: center;
+
+}
+
+.screen{
+    display: flex;
+    justify-content: center;}
+
+.signup_container{
+    display: flex;
+    border: solid;
+    width: 30vw;
+    height: 50vh;
+    background-color: white;
+    opacity: 40% ;
+    border-radius: 2%;
+
+}
