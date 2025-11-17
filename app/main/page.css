@@ -1,0 +1,15 @@
+body{
+    margin: 0;
+    background-color: #111428;
+    display: flex;
+}
+
+.screen{
+    display: flex;
+   justify-content: center;
+}
+
+.post_feed{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  background-image: url(../../../public/wallpapers.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+}
+
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.signupContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  width: 350px;
+  height: auto;
+  min-height: 500px;
+  border-radius: 12px;
+  color: white;
+  padding: 30px 20px;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.switch {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.switch button {
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.switch button:hover {
+  color: #00acee;
+}
+
+.activeSwitch {
+  border-bottom: 2px solid #00acee;
+  color: #00acee;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  align-self: flex-start;
+  margin-left: 30px;
+  margin-bottom: 5px;
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 80%;
+  border: none;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.submitButton {
+  background-color: #147399;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 40px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #072430;
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #ff6b6b;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}

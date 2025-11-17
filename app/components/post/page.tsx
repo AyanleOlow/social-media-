@@ -20,9 +20,7 @@ export default function Post() {
      <div className="postBox">
      <div className="gif"><i className="fi fi-sr-gif-square"></i></div>
      <div className="poll"><i className="fi fi-sr-poll-h"></i></div>
-     <div className="img"><i className="fi fi-sr-picture"></i></div>
-     <div className="emoji"><i className="fi fi-sr-grin"></i></div>
-      </div>
+     <div className="img-upload"> <label htmlFor="img" className="upload-label"> <i className="fi fi-sr-picture"></i> </label> <input type="file" id="img" name="img" accept="image/*" className="hidden-input" /> </div>      </div>
      <div className="postBtn"><button>post</button></div>
      </section>
 

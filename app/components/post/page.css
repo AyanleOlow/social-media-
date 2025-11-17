@@ -71,3 +71,20 @@ button:active{
     color: white;
 }
 
+.img-upload {
+  display: flex;
+  align-items: center;
+}
+
+.upload-label i {
+  color: white;
+  cursor: pointer;
+}
+
+.upload-label i:hover {
+  color: #00acee;
+}
+
+.hidden-input {
+  display: none;
+}
