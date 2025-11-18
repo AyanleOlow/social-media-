@@ -1,36 +1,71 @@
-import Image from "next/image";
-import './page.css'
+"use client";
 
+import { useState } from "react";
+import Image from "next/image";
+import Giphy from "../../components/giphy/page"; // import GIF picker
+import "./page.css";
 
 export default function Post() {
+  const [showGifBox, setShowGifBox] = useState(false);
+  const [selectedGif, setSelectedGif] = useState("");
+
   return (
     <section className="screen">
+      <section className="post">
 
-    
-   
+        <section className="postText">
+          <input className="postText" type="text" placeholder="whats happening" />
 
-    <section className="post">
+           {/* GIF BOX */}
+          {showGifBox && (
+            <Giphy 
+              onSelect={(gifUrl) => {
+                setSelectedGif(gifUrl);
+                setShowGifBox(false);
+              }}
+            />
+          )}
 
-     <section className="postText">
+        </section>
 
-      <input className="postText" type="text" placeholder="whats happening" />
+        {selectedGif && (
+          <div className="gif-preview">
+            <img src={selectedGif} alt="GIF" />
+          </div>
+        )}
 
-     </section>
-     <section className="box"> 
-     <div className="postBox">
-     <div className="gif"><i className="fi fi-sr-gif-square"></i></div>
-     <div className="poll"><i className="fi fi-sr-poll-h"></i></div>
-     <div className="img-upload"> <label htmlFor="img" className="upload-label"> <i className="fi fi-sr-picture"></i> </label> <input type="file" id="img" name="img" accept="image/*" className="hidden-input" /> </div>      </div>
-     <div className="postBtn"><button>post</button></div>
-     </section>
+        <section className="box"> 
+          <div className="postBox">
 
+            <div 
+              className="gif" 
+              onClick={() => setShowGifBox(!showGifBox)}
+            >
+              <i className="fi fi-sr-gif-square"></i>
+            </div>
 
-    </section>
-     
-  
+            <div className="poll">
+              <i className="fi fi-sr-poll-h"></i>
+            </div>
 
-    
+          
+            <div className="img-upload"> 
+              <label htmlFor="img" className="upload-label">
+                <i className="fi fi-sr-picture"></i>
+              </label>
+              <input type="file" id="img" accept="image/*" className="hidden-input" />
+            </div>
 
+          </div>
+
+          <div className="postBtn">
+            <button>post</button>
+          </div>
+
+         
+        </section>
+
+      </section>
     </section>
   );
 }

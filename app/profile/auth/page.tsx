@@ -60,7 +60,7 @@ export default function Auth() {
           username,
           display_name: displayName,
         });
-        router.push("/main");
+        router.push("/profile");
       }
     }
     setLoading(false);
