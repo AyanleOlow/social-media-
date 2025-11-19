@@ -1,22 +1,60 @@
 .screen{
     display: flex;
+    
 }
 
 .post{
     display: flex;
     border: solid #303138;
     width: 60vw;
-    height: 20vh;
+    min-height: 8vh;
     flex-direction: column;
-    
+    flex: 1;
 }
 
 .postText{
     display: flex;
     border: solid #303138;
     width: 60vw;
-    height: 13vh;
     text-align: center;
+    flex-direction: column;
+    flex: 1;
+    
+}
+
+.postTextarea{
+    width: calc(100% - 16px);
+    box-sizing: border-box;
+    padding: 8px;
+    font-size: 1rem;
+    line-height: 1.2;
+    resize: none;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    background: transparent;
+    flex: 1;
+}
+
+.img_gifs{
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    align-items: flex-start;
+}
+
+.gif-preview{
+    display: block;
+}
+
+.gif-preview .img,
+.img{
+    display: block;
+    width: 120px;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .postBox{

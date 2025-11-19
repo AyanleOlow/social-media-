@@ -14,8 +14,11 @@ export default function Post() {
       <section className="post">
 
         <section className="postText">
-          <input className="postText" type="text" placeholder="whats happening" />
+          <textarea className="postText" placeholder="whats happening" >
 
+
+          </textarea>
+          <div className="img_gifs">
            {/* GIF BOX */}
           {showGifBox && (
             <Giphy 
@@ -26,13 +29,16 @@ export default function Post() {
             />
           )}
 
-        </section>
-
         {selectedGif && (
           <div className="gif-preview">
-            <img src={selectedGif} alt="GIF" />
+            <img className="img" src={selectedGif} alt="GIF" />
           </div>
         )}
+
+        </div>
+
+        </section>
+
 
         <section className="box"> 
           <div className="postBox">

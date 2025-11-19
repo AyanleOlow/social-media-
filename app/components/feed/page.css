@@ -1,6 +1,11 @@
 .postContainer{
     display: flex;
     border: solid #303138;
-    width: 60vw;
-    height: 80vh;
+    width: 60%;
+    display: flex;
+    flex: 1;
+}
+.screen{
+    display: flex;
+    
 }

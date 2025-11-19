@@ -8,7 +8,7 @@ export default function Feed() {
 
 
      <section className="postContainer">
-        <h1></h1>
+        
     </section>
 
     
