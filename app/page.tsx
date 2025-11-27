@@ -7,6 +7,7 @@ import Feed from './components/feed/page'
 
 
 export default function Home() {
+  
   return (
     <section className="screen">
 
@@ -27,4 +28,4 @@ export default function Home() {
 
     </section>
   );
-}
+} 

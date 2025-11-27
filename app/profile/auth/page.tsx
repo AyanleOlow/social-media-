@@ -1,6 +1,6 @@
- "use client";
+"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
 import "./page.css";
@@ -22,6 +22,20 @@ export default function Auth() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // ⭐ Automatically redirect if already logged in
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data } = await supabase.auth.getSession();
+
+      if (data.session) {
+        router.push("/main"); // already logged in
+      }
+    };
+    checkSession();
+  }, [router]);
+
+
+  // ⭐ Signup or Login
   const handleAuth = async () => {
     setError("");
     setLoading(true);
@@ -33,36 +47,37 @@ export default function Auth() {
     }
 
     if (isLogin) {
-      // Login
+      
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
+
       if (error) setError(error.message);
-      else router.push("/");
+      else router.push("/main");
+
     } else {
-      // Signup
+    
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          data: {
-            username,
-            display_name: displayName,
-          },
+          data: { username, display_name: displayName },
         },
       });
 
       if (error) setError(error.message);
       else if (data.user) {
-        await supabase.from("profiles").insert({
+        await supabase.from("profile").insert({
           id: data.user.id,
           username,
           display_name: displayName,
         });
-        router.push("/profile");
+
+        router.push("/main");
       }
     }
+
     setLoading(false);
   };
 
@@ -94,6 +109,7 @@ export default function Auth() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
+
               <label>Display Name</label>
               <input
                 type="text"
