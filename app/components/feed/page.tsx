@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import supabase from "@/app/utils/supabaseClient";
 import "./page.css";
 
 export default function Feed() {
@@ -9,12 +8,10 @@ export default function Feed() {
   const [loading, setLoading] = useState(true);
 
   async function loadTweets() {
-    const { data, error } = await supabase
-      .from("tweets")
-      .select("*")
-      .order("created_at", { ascending: false });
+    const res = await fetch("/api/tweets/new");
+    const data = await res.json();
 
-    if (!error) setTweets(data || []);
+    setTweets(data);
     setLoading(false);
   }
 
@@ -22,12 +19,10 @@ export default function Feed() {
     loadTweets();
   }, []);
 
-  if (loading) return <p className="loading">Loading feed...</p>;
 
   return (
     <section className="screen">
       <section className="feedContainer">
-
         {tweets.length === 0 && <p className="empty">No posts yet.</p>}
 
         {tweets.map((tweet) => (
@@ -41,11 +36,13 @@ export default function Feed() {
 
             {tweet.gif && <img src={tweet.gif} className="tweetGIF" />}
 
-            <p className="timestamp">{new Date(tweet.created_at).toLocaleTimeString()}</p>
+            <p className="timestamp">
+              {new Date(tweet.created_at).toLocaleString()}
+            </p>
           </div>
         ))}
-
       </section>
     </section>
   );
 }
+   

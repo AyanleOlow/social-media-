@@ -86,7 +86,9 @@
     justify-content: space-between;
     position: relative;
     top: 10px;
+    height: 5vh;
 }
+
 
 button{
     display: flex;
@@ -96,8 +98,9 @@ button{
     color: black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     width: 5vw;
+    height: 3vh;
     position: relative;
-    right: 10px;
+    right: 20px;
 }
 button:hover{
     display: flex;

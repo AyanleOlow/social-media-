@@ -1,39 +1,34 @@
 "use client";
 
 import { useState } from "react";
-import supabase from "@/app/utils/supabaseClient";
-import Giphy from "../../components/giphy/page"; 
+import Giphy from "../../components/giphy/page";
 import "./page.css";
 
 export default function Post() {
   const [showGifBox, setShowGifBox] = useState(false);
   const [selectedGif, setSelectedGif] = useState("");
+  const [content, setContent] = useState("");
 
   async function handlePost() {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return alert("You must be logged in");
+    if (!content.trim()) return alert("Write something first!");
 
-    const user = session.user;
-    const content = document.querySelector("textarea")?.value || "";
-
-    // 🔥 GET PROFILE from Supabase (so feed shows Name)
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("username, display_name")
-      .eq("id", user.id)
-      .single();
-
-    // 🔥 Insert tweet with profile values
-    const { error } = await supabase.from("tweets").insert({
-      user_id: user.id,
-      content,
-      gif: selectedGif || null,
-      username: profile?.username,
-      display_name: profile?.display_name,
+    const res = await fetch("/api/tweets/new", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        content,
+        gif: selectedGif || null,
+      }),
     });
 
-    if (error) console.log(error);
-    else window.location.href = "/feed";
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.error || "Failed to post");
+      return;
+    }
+
+    window.location.href = "/feed";
   }
 
   return (
@@ -41,10 +36,15 @@ export default function Post() {
       <section className="post">
 
         <section className="postText">
-          <textarea className="postText" placeholder="whats happening" />
+          <textarea
+            className="postText"
+            placeholder="whats happening?"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
 
           <div className="img_gifs">
-            {/* GIF PICKER */}
+           
             {showGifBox && (
               <Giphy
                 onSelect={(gifUrl: string) => {
@@ -71,13 +71,16 @@ export default function Post() {
             <div className="poll"><i className="fi fi-sr-poll-h"></i></div>
 
             <div className="img-upload">
-              <label htmlFor="img" className="upload-label"><i className="fi fi-sr-picture"></i></label>
+              <label htmlFor="img" className="upload-label">
+                <i className="fi fi-sr-picture"></i>
+              </label>
               <input type="file" id="img" accept="image/*" className="hidden-input" />
             </div>
           </div>
 
           <button onClick={handlePost}>Post</button>
         </section>
+
       </section>
     </section>
   );

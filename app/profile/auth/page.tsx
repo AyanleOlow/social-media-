@@ -1,15 +1,9 @@
+// app/auth/page.tsx (or wherever it is)
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createClient } from "@supabase/supabase-js";
 import "./page.css";
-
-// Supabase client
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 export default function Auth() {
   const router = useRouter();
@@ -22,64 +16,41 @@ export default function Auth() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // ⭐ Automatically redirect if already logged in
-  useEffect(() => {
-    const checkSession = async () => {
-      const { data } = await supabase.auth.getSession();
-
-      if (data.session) {
-        router.push("/main"); // already logged in
-      }
-    };
-    checkSession();
-  }, [router]);
-
-
-  // ⭐ Signup or Login
   const handleAuth = async () => {
-    setError("");
-    setLoading(true);
+  setError("");
+  setLoading(true);
 
-    if (!email || !password) {
-      setError("Email and password are required.");
-      setLoading(false);
-      return;
-    }
+  try {
+    let response;
 
     if (isLogin) {
-      
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
-
-      if (error) setError(error.message);
-      else router.push("/main");
-
     } else {
-    
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: { username, display_name: displayName },
-        },
+      response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, username, displayName }),
       });
-
-      if (error) setError(error.message);
-      else if (data.user) {
-        await supabase.from("profile").insert({
-          id: data.user.id,
-          username,
-          display_name: displayName,
-        });
-
-        router.push("/main");
-      }
     }
 
-    setLoading(false);
-  };
+    const data = await response.json();
+
+    if (!response.ok) {
+      setError(data.error);
+    } else {
+      router.push("/main");
+    }
+  } catch (err) {
+    console.error(err);
+    setError("Network error");
+  }
+
+  setLoading(false);
+};
 
   return (
     <section className="screen">
