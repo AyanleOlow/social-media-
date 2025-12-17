@@ -1,38 +1,31 @@
 "use client";
-
 import { useState } from "react";
 import Giphy from "../../components/giphy/page";
-import "./page.css";
+import './page.css'
 
 export default function Post() {
-  const [showGifBox, setShowGifBox] = useState(false);
-  const [selectedGif, setSelectedGif] = useState("");
   const [content, setContent] = useState("");
+  const [selectedGif, setSelectedGif] = useState("");
+  const [showGifBox, setShowGifBox] = useState(false);
 
   async function handlePost() {
     if (!content.trim()) return alert("Write something first!");
 
-    const res = await fetch("/api/tweets/new", {
+    const res = await fetch("/api/tweet/new", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        content,
-        gif: selectedGif || null,
-      }),
+      credentials: "include", 
+      body: JSON.stringify({ content, gif: selectedGif || null }),
     });
 
     const data = await res.json();
-
-    if (!res.ok) {
-      alert(data.error || "Failed to post");
-      return;
-    }
+    if (!res.ok) return alert(data.error || "Failed to post");
 
     window.location.href = "/feed";
   }
 
   return (
-    <section className="screen">
+      <section className="screen">
       <section className="post">
 
         <section className="postText">

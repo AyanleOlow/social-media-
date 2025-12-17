@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       );
     }
 
-    
+
     const token = await new SignJWT({
       user_id: user.user_id,
       username: user.username,
@@ -65,11 +65,12 @@ export async function POST(req: Request) {
 
     res.cookies.set("auth_token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production" ? true : false,
-      sameSite: "strict",
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
       path: "/",
       maxAge: 60 * 60 * 24 * 7,
     });
+
 
     return res;
   } catch (err) {

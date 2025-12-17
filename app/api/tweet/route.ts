@@ -5,7 +5,6 @@ export async function GET() {
   try {
     const conn = await getConnection();
 
-    
     const [rows]: any = await conn.query(
       "SELECT id, user_id, username, display_name, content, gif, created_at FROM tweets ORDER BY created_at DESC"
     );

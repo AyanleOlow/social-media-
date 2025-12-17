@@ -1,4 +1,3 @@
-// app/auth/page.tsx (or wherever it is)
 "use client";
 
 import { useState } from "react";
@@ -27,12 +26,14 @@ export default function Auth() {
       response = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ email, password }),
       });
     } else {
       response = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ email, password, username, displayName }),
       });
     }

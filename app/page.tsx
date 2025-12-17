@@ -2,7 +2,7 @@ import Image from "next/image";
 import './page.css'
 import Navbar from './components/navbar/page'
 import Trends from './components/trends/page'
-import Post from './components/post/page'
+import Post from './components/post/page';
 import Feed from './components/feed/page'
 
 

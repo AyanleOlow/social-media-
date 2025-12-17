@@ -7,13 +7,16 @@ export default function Feed() {
   const [tweets, setTweets] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  async function loadTweets() {
-    const res = await fetch("/api/tweets/new");
-    const data = await res.json();
+ async function loadTweets() {
+  const res = await fetch("/api/tweets/new", {
+    credentials: "include", 
+  });
 
-    setTweets(data);
-    setLoading(false);
-  }
+  const data = await res.json();
+  setTweets(data);
+  setLoading(false);
+}
+
 
   useEffect(() => {
     loadTweets();
